@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="icon" href="{{url_for('static', filename='icons/icon_128x128.png')}}" type="image/png">
+    <link rel="icon" href="{{url_for('static', filename='icons/icon_256x256.png')}}" type="image/png">
+    <link rel="icon" href="{{url_for('static', filename='icons/icon_512x512.png')}}" type="image/png">
+    <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon_128x128.png')}}" type="image/png">
+    <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon_256x256.png')}}" type="image/png">
+    <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon_512x512.png')}}" type="image/png">
+    <link rel="manifest" href="/manifest.json">
+
+    <title>SmartPrice</title>
+</head>
+<body>
+    <div class="container">
+        <form action="/" method="post">
+            <div class="etichetta_gasolio">
+                <label for="price1" id="label_gasolio">GASOLIO</label>
+            </div>
+            <input type="number" name="price1" step="0.001" oninput="addDecimalPoint(this)" required>
+            <div class="etichetta_benzina">
+                <label for="price2" id="label_benzina">BENZINA</label>
+            </div>
+            <input type="number" name="price2" step="0.001" oninput="addDecimalPoint(this)" required>
+            <!-- Add other input fields here if necessary, new stylesheet is up to the editor -->
+            <button type="submit" id="button">INVIA</button>
+        </form>
+    </div>
+    <div class="a_container">
+        <a href="{{ url_for('differ') }}" id="differ_button">DIFFERENZIALE</a>
+    </div>
+    <script>
+        function addDecimalPoint(input) {
+    let value = input.value;
+    value = value.replace(/[^0-9]/g, '');
+    if (value.length > 1) {
+        value = value.slice(0, 1) + '.' + value.slice(1);
+    }
+    input.value = value;
+}
+
+function limitToFiveCharacters(input) {
+    if (input.value.length > 5) {
+input.value = input.value.substring(0, 5);
+}
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const price1Input = document.querySelector('input[name="price1"]');
+    const price2Input = document.querySelector('input[name="price2"]');
+
+    price1Input.addEventListener("input", function() {
+        limitToFiveCharacters(this);
+    });
+
+    price2Input.addEventListener("input", function() {
+        limitToFiveCharacters(this);
+    });
+});
+
+function limitInputToFiveCharacters(input) {
+    if (input.value.length > 5) {
+input.value = input.value.substring(0, 5);
+}
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+/* UPDATE NEEDED, CUSTOM FONTS 'ARIMO' AND 'KANIT' NOT WORKING... */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to left, #FF5757, #8C52FF);
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    min-height: 90vh;
+}
+
+.container {
+    display: flex;
+    text-align: center;
+    background-color: white;
+    width: 81vw;
+    height: 52vh;
+    border-radius: 10px;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.etichetta_gasolio {
+    font-family: 'Kanit', sans-serif;
+    display: flex;
+    font-weight: 900;
+    width:80vw;
+    height: 10vh;
+    background-color: #EEBA2B;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 3rem;
+    color: #000e20;
+    border-bottom: 2px solid black;
+}
+
+.etichetta_benzina {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 900;
+    display: flex;
+    width:80vw;
+    height: 10vh;
+    background-color: #04AB1F;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 3rem;
+    color: #000e20;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+}
+
+input[name="price1"],
+input[name="price2"] {
+    width: 70vw;
+    height: 15vh;
+    border: none;
+    border-radius: 10px;
+    background-color: #000e20;
+    font-size: 4rem;
+    font-weight: 900;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+#button {
+    font-family: 'Arimo', sans-serif;
+    width: 80vw;
+    height: 15vh;
+    border-radius: 100px;
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(to right, #CDFFD8, #94B9FF);
+    color: #000e20;
+    border: 2px solid black;
+    margin-top: 5vh;
+}
+.a_container {
+    display: flex;
+    width: 85vw;
+    height: 15vh;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: linear-gradient(to right, #CDFFD8, #94B9FF);
+    border: 2px solid black;
+    margin-top: 20vh;
+    margin-bottom: -5vh;
+}
+#differ_button {
+    font-family: 'Arimo', sans-serif;
+    text-decoration: none;
+    color: #000e20;
+    font-size: 2.2rem;
+    font-weight: 900;
+}
+@media (min-width: 680px) {
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        display: flex;
+        background: linear-gradient(to left, #ff5757, #8C52FF);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        display: flex;
+        text-align: center;
+        margin-top: 5vh;
+        background-color: white;
+        width: 40vw;
+        height: 70vh;
+        border-radius: 10px;
+        border: 2px solid rgb(0, 0, 0);
+        margin-bottom: 10vh;
+    }
+
+    .etichetta_gasolio {
+        font-family: 'Kanit', sans-serif;
+        display: flex;
+        font-weight: 900;
+        width:39.8vw;
+        height: 15vh;
+        background-color: #EEBA2B;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        font-size: 3rem;
+        color: #000e20;
+        border-bottom: 2px solid black;
+    }
+    
+    .etichetta_benzina {
+        font-family: 'Kanit', sans-serif;
+        font-weight: 900;
+        display: flex;
+        width:39.8vw;
+        height: 15vh;
+        background-color: #04AB1F;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        font-size: 3rem;
+        color: #000e20;
+        border-bottom: 2px solid black;
+        border-top: 2px solid black;
+    }
+    input[name="price1"],
+    input[name="price2"] {
+        width: 29vw;
+        height: 18vh;
+        border: none;
+        border-radius: 10px;
+        background-color: #000e20;
+        font-size: 4rem;
+        font-weight: 900;
+        color: rgb(255, 255, 255);
+        margin-right: 0vw;
+    }
+    
+    #button {
+        position: absolute;
+        left: 29vw;
+        bottom: 1vh;
+        font-family: 'Arimo', sans-serif;
+        width: 20vw;
+        height: 15vh;
+        border-radius: 10px;
+        font-size: 3rem;
+        font-weight: 900;
+        background: linear-gradient(to right, #CDFFD8, #94B9FF);
+        color: #000e20;
+        border: 2px solid black;
+    }
+
+    .a_container {
+        position: absolute;
+        width: 20vw;
+        height: 15vh;
+        right: 29vw;
+        bottom: 6vh;
+
+    }
+}

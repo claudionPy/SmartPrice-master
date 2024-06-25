@@ -1,0 +1,23 @@
+#to create the service file follow the steps
+#on the terminal copy:
+sudo nano /etc/systemd/system/smartprice.service
+
+#paste the following lines as you see them
+
+[Unit]
+Description=Gunicorn instance to serve SmartPrice
+After=network.target
+
+[Service]
+User=raspberry
+Group=www-data
+WorkingDirectory=/home/raspberry/SmartPrice
+Environment="PATH=/home/raspberry/SmartPrice/venv/bin"
+ExecStart=/home/raspberry/SmartPrice/venv/bin/gunicorn -c /home/raspberry/SmartPrice/server_config.py main:app
+
+[Install]
+WantedBy=multi-user.target
+
+#save the file and enable the service
+#to enable the service: sudo systemctl enable smartprice.service
+#to start the service: sudo systemctl start smartprice.service

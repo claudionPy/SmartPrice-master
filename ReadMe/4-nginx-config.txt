@@ -1,0 +1,44 @@
+#there is how to install and configure Nginx reverse proxy
+#open the terminal and copy:
+
+sudo apt update
+sudo apt install nginx
+
+
+#after nginx installation, create the configuration file:
+#copy:
+sudo nano /etc/nginx/sites-available/smartprice-rp
+
+#and paste the following configuration:
+
+server {
+    listen 80;
+    listen [::]:80 ipv6only=on;
+    server_name smartprice.local;
+
+    location / {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+#save the file
+#after the configuration is ready enable it by doing:
+
+sudo ln -s /etc/nginx/sites-available/smartprice-rp /etc/nginx/sites-enabled/
+
+#restart nginx service:
+
+sudo systemctl restart nginx
+sudo systemctl status nginx
+
+#try access the web page by going on a web browser and typing: smartprice.local
+#if '502 bad gateway appears' ensure that the smartprice service file is running
+

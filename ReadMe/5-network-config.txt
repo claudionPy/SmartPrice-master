@@ -1,0 +1,65 @@
+#to configure the Raspberry pi as an Access Point follow the steps
+#on the terminal copy:
+
+sudo apt-get update
+sudo apt-get install hostapd dnsmasq
+
+#to edit the hostapd config file:
+
+sudo nano /etc/hostapd/hostapd.conf
+#and paste in it the following:
+
+interface=wlan0
+driver=nl80211
+ssid=smartprice
+hw_mode=g
+channel=7
+wmm_enabled=0
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+wpa_passphrase=smartprice-rpi
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+
+#save the file
+
+#to configure dnsmasq do:
+
+sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
+sudo nano /etc/dnsmasq.conf
+
+#add the following
+
+interface=wlan0
+dhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h
+
+#save the file
+
+#edit the dhcp config file
+
+sudo nano /etc/dhcpcd.conf
+
+#add the following lines at the end
+
+interface wlan0
+static ip_address=192.168.4.1/24
+nohook wpa_supplicant
+
+#save the file
+
+#unmask and enable
+#copy-paste everything down below
+
+sudo systemctl unmask hostapd
+sudo systemctl enable hostapd
+sudo systemctl start hostapd
+sudo systemctl enable dnsmasq
+sudo systemctl start dnsmasq
+
+#reboot
+
+#once rebooting the raspberry will show his own wi-fi (smartprice)
+#connect it with the password: smartprice-rpi
